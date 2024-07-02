@@ -17,7 +17,6 @@ class AuthResource extends JsonResource
         return [
             "id" => $this->id,
             "email" => $this->email,
-            "password" => $this->password,
             "token" => $this->whenNotNull($this->token)
         ];
     }

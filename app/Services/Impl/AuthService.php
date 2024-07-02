@@ -9,9 +9,10 @@ use App\Http\Resources\AuthResource;
 use App\Models\User;
 use App\Repositories\IAuthRepository;
 use App\Services\IAuthService;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthService implements IAuthService
 {
@@ -37,9 +38,27 @@ class AuthService implements IAuthService
         }
     }
 
-    public function login(AuthLoginReq $request): AuthResource
+    public function login(AuthLoginReq $request): array
     {
-        // TODO: Implement login() method.
+        $data = $request->validated();
+
+        if(! $token = JWTAuth::attempt($data)){
+            throw new ServiceException("Invalid credential", 401);
+        }
+
+        $user = Auth::user();
+        return [
+            "email" => $user->email,
+            "token" => $token
+        ];
     }
 
+    public function logout(Request $request): void{
+        try{
+            Auth::logout();
+            JWTAuth::invalidate($request->bearerToken());
+        }catch (\Exception $e){
+            throw new ServiceException("Internal server error", 500);
+        }
+    }
 }
