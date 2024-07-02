@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use App\Traits\ApiResponse;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AuthLoginReq extends FormRequest
+class CategoryProductCreateReq extends FormRequest
 {
     use ApiResponse;
     /**
@@ -15,9 +14,9 @@ class AuthLoginReq extends FormRequest
      *
      * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return true;
+        return $this->user() != null;
     }
 
     /**
@@ -25,11 +24,10 @@ class AuthLoginReq extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            "email" => ["required", "max:200", "email"],
-            "password" => ["required", "max:200"],
+            "name" => ["required", "max:100"]
         ];
     }
 

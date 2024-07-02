@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -16,6 +17,7 @@ class Product extends Model
     public $incrementing = false;
 
     protected $fillable = [
+        "id",
         "name",
         "product_category_id",
         "price",
@@ -26,5 +28,16 @@ class Product extends Model
     public function categoryProduct(): BelongsTo
     {
         return $this->belongsTo(CategoryProduct::class, "product_category_id", "id");
+    }
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function(Product $model){
+            if(empty($model->{$model->getKeyName()})){
+                $model->{$model->getKeyName()} = (string) Str::uuid();
+            }
+        });
     }
 }

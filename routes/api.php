@@ -20,6 +20,17 @@ Route::prefix("/auth")->controller(\App\Http\Controllers\AuthController::class)-
    Route::post("/logout", "logout")->middleware("jwt.auth");
 });
 
-Route::middleware('jwt.auth')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('jwt.auth')->group(function(){
+
+   Route::prefix("/category-products")
+       ->controller(\App\Http\Controllers\CategoryProductController::class)
+       ->group(function(){
+       Route::get("", "getAll");
+       Route::post("", "create");
+       Route::get("/{id}", "getById");
+       Route::put("/{id}", "update");
+       Route::delete("/{id}", "delete");
+   });
+
+
 });

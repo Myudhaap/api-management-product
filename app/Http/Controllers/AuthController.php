@@ -34,7 +34,7 @@ class AuthController extends Controller
         try{
             $authRes = $this->authService->login($request);
 
-            return $this->successResponse($authRes, "Successfully register", 200);
+            return $this->successResponse($authRes, "Successfully login", 200);
         }catch (ServiceException $e){
             return $this->errorResponse($e->getMessage(), $e->getCode());
         }
