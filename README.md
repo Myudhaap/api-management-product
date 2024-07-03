@@ -116,6 +116,12 @@ Postman : https://documenter.getpostman.com/view/28401427/2sA3dxDBgg
 
 Link File Postman and Environment : https://drive.google.com/drive/folders/1FvPjpzGsHwNqjXKljHsnoobczzbaKlC2?usp=sharing
 
+## Errors 
+- Error when create or update product
+<img src="resources\assets\error-product-firebase.png" width="400" alt="Laravel Logo">
+ If u have error like that, u must replace firebase_credential.json with your firebase account on file "storage/firebase_credential.json"
+
+
 ## Contact
 
 Muhammad Yudha Adi Pratama -
