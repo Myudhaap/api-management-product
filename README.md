@@ -1,12 +1,12 @@
 <p align="center">
-    <a href="https://laravel.com" target="_blank">
+    <a href="https://github.com/Myudhaap/api-management-product" target="_blank">
         <img src="resources\assets\home.png" width="400" alt="Laravel Logo">
     </a>
 </p>
 
 ## About API Management Product
 
-API Management Product merupakan sebuah restful api yang di kembangkan menggunakan Framework Laravel, yang digunakan untuk membantu dalam melakukan management suatu product. Pada API ini terdapat beberapa feature diantara lain:
+API Management Product is a RESTful API developed using the Laravel Framework, designed to assist in managing products. This API includes several features, including:
 
 - Authentication with JWT (Login).
 - Management Category Product
@@ -123,4 +123,4 @@ Muhammad Yudha Adi Pratama -
 [@Linkedin](https://www.linkedin.com/in/muhammad-yudha-adi-pratama-116433177/)
 
 
-Project Link API Koperasi: [https://github.com/Myudhaap/api-koperasi](https://github.com/Myudhaap/api-koperasi)
+Project Link API Koperasi: [https://github.com/Myudhaap/api-management-product](https://github.com/Myudhaap/api-management-product)
