@@ -32,6 +32,7 @@ class FirebaseService
             ["name" => $path.$filePath]
         );
 
+
         return [
             "fileUpload" => $fileUpload,
             "filePath" => $filePath

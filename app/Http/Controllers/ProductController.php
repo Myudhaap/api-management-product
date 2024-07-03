@@ -25,7 +25,6 @@ class ProductController extends Controller
     {
         try{
             $product = $this->productService->create($request);
-
             return $this->successResponse($product, "Successfully create product", 201);
         }catch (\Exception $e){
             return $this->errorResponse($e->getMessage(), $e->getCode());
