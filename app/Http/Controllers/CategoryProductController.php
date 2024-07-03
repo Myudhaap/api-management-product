@@ -34,7 +34,7 @@ class CategoryProductController extends Controller
     public function update(CategoryProductUpdateReq $request, string $id): JsonResponse
     {
         try{
-            if($request->id != $id) return $this->errorResponse("bad request", 400);
+            if($request->id != $id) throw new \Exception("bad request", 400);
 
             $category = $this->categoryService->update($request);
 

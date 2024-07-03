@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("name", 200)->nullable(false);
             $table->bigInteger("price")->nullable(false);
             $table->string("image", 255);
+            $table->longText("imageUrl");
             $table->boolean("is_active")->default(true);
             $table->timestamps();
 

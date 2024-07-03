@@ -17,13 +17,23 @@ use Illuminate\Support\Facades\Route;
 Route::prefix("/auth")->controller(\App\Http\Controllers\AuthController::class)->group(function (){
    Route::post("/login", "login")->name("login");
    Route::post("/register", "register");
-   Route::post("/logout", "logout")->middleware("jwt.auth");
+   Route::post("/logout", "logout")->middleware("jwt");
 });
 
-Route::middleware('jwt.auth')->group(function(){
+Route::middleware('jwt')->group(function(){
 
    Route::prefix("/category-products")
        ->controller(\App\Http\Controllers\CategoryProductController::class)
+       ->group(function(){
+       Route::get("", "getAll");
+       Route::post("", "create");
+       Route::get("/{id}", "getById");
+       Route::put("/{id}", "update");
+       Route::delete("/{id}", "delete");
+   });
+
+   Route::prefix("/products")
+       ->controller(\App\Http\Controllers\ProductController::class)
        ->group(function(){
        Route::get("", "getAll");
        Route::post("", "create");

@@ -31,4 +31,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'firebase' => [
+        'credentials' => [
+            'file' => storage_path('firebase_credential.json'),
+        ],
+        "project_id" => "management-product-dfe97",
+        'storage_bucket' => 'management-product-dfe97.appspot.com',
+    ],
+
 ];

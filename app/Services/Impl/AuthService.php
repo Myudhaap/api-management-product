@@ -43,7 +43,7 @@ class AuthService implements IAuthService
         $data = $request->validated();
 
         if(! $token = JWTAuth::attempt($data)){
-            throw new ServiceException("Invalid credential", 401);
+            throw new ServiceException("Invalid credentials", 401);
         }
 
         $user = Auth::user();

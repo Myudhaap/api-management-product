@@ -16,25 +16,27 @@ trait ApiResponse
     }
     protected function successResponsePagination($data, $message, $code = 200)
     {
-        return response()->json([
+        $res =  response()->json([
             'statusCode' => $code,
             'message' => $message,
-            "data" => [...$data],
+            "data" => $data,
             "pagination" => [
                 'current_page' => $data->currentPage(),
                 'last_page' => $data->lastPage(),
                 'per_page' => $data->perPage(),
                 'total' => $data->total(),
             ]
-        ], $code);
+        ])->setStatusCode(200);
+
+        return $res;
     }
 
     protected function errorResponse($message, $code = 400, $errors = null)
     {
         throw new HttpResponseException(response([
-            'statusCode' => $code,
+            'statusCode' => $code != 0 ? $code : 500,
             'message' => $message,
             "errors" => $errors
-        ], $code));
+        ], $code != 0 ? $code : 500));
     }
 }
